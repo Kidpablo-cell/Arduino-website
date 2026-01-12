@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule </title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html, body {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    body {
+      box-sizing: border-box;
+    }
+    
+    .h-full { height: 100%; }
+    .w-full { width: 100%; }
+    .overflow-auto { overflow: auto; }
+    .sticky { position: sticky; }
+    .top-0 { top: 0; }
+    .z-40 { z-index: 40; }
+    .z-50 { z-index: 50; }
+    .backdrop-blur-lg { backdrop-filter: blur(16px); }
+    .backdrop-blur-md { backdrop-filter: blur(12px); }
+    .backdrop-blur-sm { backdrop-filter: blur(4px); }
+    .border-b { border-bottom: 1px solid; }
+    .border { border: 1px solid; }
+    .border-2 { border: 2px solid; }
+    .border-dashed { border-style: dashed; }
+    .border-white\/20 { border-color: rgba(255, 255, 255, 0.2); }
+    .border-white\/30 { border-color: rgba(255, 255, 255, 0.3); }
+    .border-white\/10 { border-color: rgba(255, 255, 255, 0.1); }
+    .border-gray-700 { border-color: #374151; }
+    .max-w-5xl { max-width: 80rem; }
+    .max-w-md { max-width: 28rem; }
+    .max-w-sm { max-width: 24rem; }
+    .max-w-2xl { max-width: 42rem; }
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+    .py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+    .py-2 { padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+    .py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+    .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .px-8 { padding-left: 2rem; padding-right: 2rem; }
+    .p-4 { padding: 1rem; }
+    .p-6 { padding: 1.5rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-3 { margin-bottom: 0.75rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .mb-12 { margin-bottom: 3rem; }
+    .mt-1 { margin-top: 0.25rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mt-16 { margin-top: 4rem; }
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .justify-center { justify-content: center; }
+    .gap-2 { gap: 0.5rem; }
+    .gap-3 { gap: 0.75rem; }
+    .gap-4 { gap: 1rem; }
+    .gap-6 { gap: 1.5rem; }
+    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+    .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+    .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+    .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+    .font-bold { font-weight: 700; }
+    .font-semibold { font-weight: 600; }
+    .font-medium { font-weight: 500; }
+    .text-white { color: #ffffff; }
+    .text-white\/80 { color: rgba(255, 255, 255, 0.8); }
+    .text-white\/70 { color: rgba(255, 255, 255, 0.7); }
+    .text-red-300 { color: #fca5a5; }
+    .text-purple-600 { color: #9333ea; }
+    .text-center { text-align: center; }
+    .text-left { text-align: left; }
+    .bg-white { background-color: #ffffff; }
+    .bg-white\/10 { background-color: rgba(255, 255, 255, 0.1); }
+    .bg-white\/20 { background-color: rgba(255, 255, 255, 0.2); }
+    .bg-gray-800 { background-color: #1f2937; }
+    .bg-gray-900 { background-color: #111827; }
+    .bg-purple-600 { background-color: #9333ea; }
+    .bg-red-500 { background-color: #ef4444; }
+    .bg-green-500 { background-color: #22c55e; }
+    .bg-red-500\/20 { background-color: rgba(239, 68, 68, 0.2); }
+    .bg-purple-500\/30 { background-color: rgba(168, 85, 247, 0.3); }
+    .bg-yellow-400\/30 { background-color: rgba(250, 204, 21, 0.3); }
+    .bg-green-400\/30 { background-color: rgba(74, 222, 128, 0.3); }
+    .bg-blue-400\/30 { background-color: rgba(96, 165, 250, 0.3); }
+    .bg-black\/50 { background-color: rgba(0, 0, 0, 0.5); }
+    .rounded-lg { border-radius: 0.5rem; }
+    .rounded-xl { border-radius: 0.75rem; }
+    .rounded-2xl { border-radius: 1rem; }
+    .transition-all { transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); }
+    .transition-colors { transition: color 0.15s, background-color 0.15s; }
+    .transform { transform: translateZ(0); }
+    .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); }
+    .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+    .shadow-2xl { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+    .hidden { display: none; }
+    .fixed { position: fixed; }
+    .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+    .space-y-2 > * + * { margin-top: 0.5rem; }
+    .flex-1 { flex: 1; }
+    .flex-shrink-0 { flex-shrink: 0; }
+    .min-w-0 { min-width: 0; }
+    .block { display: block; }
+    
+    .w-5 { width: 1.25rem; }
+    .h-5 { height: 1.25rem; }
+    .w-9 { width: 2.25rem; }
+    .h-9 { height: 2.25rem; }
+    .w-10 { width: 2.5rem; }
+    .h-10 { height: 2.5rem; }
+    .w-12 { width: 3rem; }
+    .h-12 { height: 3rem; }
+    .w-20 { width: 5rem; }
+    .h-20 { height: 5rem; }
+    
+    button {
+      cursor: pointer;
+      border: none;
+      outline: none;
+    }
+    
+    button:hover:not(:disabled) {
+      opacity: 0.9;
+    }
+    
+    input, select {
+      outline: none;
+    }
+    
+    input:focus, select:focus {
+      border-color: #9333ea;
+    }
+    
+    .bg-white\/30:hover { background-color: rgba(255, 255, 255, 0.3); }
+    .bg-white\/20:hover { background-color: rgba(255, 255, 255, 0.3); }
+    .bg-gray-700:hover { background-color: #374151; }
+    .bg-purple-700:hover { background-color: #7e22ce; }
+    .bg-red-500\/30:hover { background-color: rgba(239, 68, 68, 0.3); }
+    
+    .hover\:scale-105:hover { transform: scale(1.05); }
+    .hover\:shadow-2xl:hover { box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
+    .hover\:shadow-xl:hover { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+    .hover\:text-white:hover { color: #ffffff; }
+    
+    .grid {
+      display: grid;
+    }
+    
+    @media (min-width: 768px) {
+      .md\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    
+    @media (min-width: 640px) {
+      .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    
+    @media (min-width: 1024px) {
+      .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    
+    .max-h-\[90\%\] { max-height: 90%; }
+    .overflow-y-auto { overflow-y: auto; }
+    
+    .slide-in {
+      animation: slideIn 0.3s ease-out;
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.4s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .section-card {
+      backdrop-filter: blur(12px);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      text-align: left;
+      transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: translateZ(0);
+    }
+    
+    .section-card:hover {
+      transform: scale(1.05);
+    }
+    
+    .text-emoji {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .section-title {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+    
+    .text-white-70 {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="root" class="h-full w-full overflow-auto" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"><!-- Header -->
+   <header class="sticky top-0 z-40 backdrop-blur-lg bg-white/10 border-b border-white/20">
+    <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+     <h1 id="app-title" class="text-2xl font-bold text-white">My Schedule</h1><button id="nav-btn" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg transition-all"> Menu </button>
+    </div>
+   </header><!-- Main Container -->
+   <main class="max-w-5xl mx-auto px-4 py-8"><!-- Home View -->
+    <div id="view-home" class="view">
+     <div class="text-center mb-12 fade-in">
+      <div class="w-20 h-20 mx-auto mb-6 bg-white/20 rounded-2xl flex items-center justify-center">
+       <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+       </svg>
+      </div>
+      <h2 class="text-4xl font-bold text-white mb-4">Schedules...</h2>
+      <p id="welcome-msg" class="text-xl text-white/80 mb-8 max-w-2xl mx-auto">Manage your class schedules with ease. Stay organized and never miss a class!</p><button onclick="goToView('sections')" class="px-8 py-3 bg-white text-purple-600 font-semibold rounded-xl hover:shadow-2xl transition-all transform hover:scale-105"> View Schedules </button>
+     </div>
+     <div class="grid md:grid-cols-3 gap-6 mt-16">
+      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 slide-in">
+       <div class="w-12 h-12 bg-yellow-400/30 rounded-xl flex items-center justify-center mb-4"><span class="text-2xl">📚</span>
+       </div>
+       <h3 class="text-lg font-semibold text-white mb-2">Multiple Sections</h3>
+       <p class="text-white/70">Organize classes by section</p>
+      </div>
+      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 slide-in" style="animation-delay: 0.1s;">
+       <div class="w-12 h-12 bg-green-400/30 rounded-xl flex items-center justify-center mb-4"><span class="text-2xl">➕</span>
+       </div>
+       <h3 class="text-lg font-semibold text-white mb-2">Easy Adding</h3>
+       <p class="text-white/70">Add classes in seconds</p>
+      </div>
+      <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 border border-white/20 slide-in" style="animation-delay: 0.2s;">
+       <div class="w-12 h-12 bg-blue-400/30 rounded-xl flex items-center justify-center mb-4"><span class="text-2xl">👁️</span>
+       </div>
+       <h3 class="text-lg font-semibold text-white mb-2">Quick View</h3>
+       <p class="text-white/70">See all classes at a glance</p>
+      </div>
+     </div>
+    </div><!-- Sections View -->
+    <div id="view-sections" class="view hidden">
+     <div class="mb-8">
+      <h2 class="text-3xl font-bold text-white mb-2">Your Sections</h2>
+      <p class="text-white/80">Select a section to view its schedule</p>
+     </div>
+     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"><!-- Archimedes --> <button onclick="openSection('archimedes', 'Archimedes')" class="bg-gradient-to-br from-blue-500/30 to-blue-700/30 hover:from-blue-500/40 hover:to-blue-700/40 backdrop-blur-md rounded-2xl p-6 border border-white/20 text-left transition-all transform hover:scale-105">
+       <div class="text-4xl mb-3">
+        🏛️
+       </div><h3 class="text-xl font-semibold text-white">Archimedes</h3><p class="text-white/70 text-sm mt-1">View schedule</p></button> <!-- Galileo --> <button onclick="openSection('galileo', 'Galileo')" class="bg-gradient-to-br from-cyan-500/30 to-cyan-700/30 hover:from-cyan-500/40 hover:to-cyan-700/40 backdrop-blur-md rounded-2xl p-6 border border-white/20 text-left transition-all transform hover:scale-105">
+       <div class="text-4xl mb-3">
+        🔭
+       </div><h3 class="text-xl font-semibold text-white">Galileo</h3><p class="text-white/70 text-sm mt-1">View schedule</p></button> <!-- Add Section --> <button onclick="showAddSectionDialog()" class="bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-2xl p-6 border-2 border-dashed border-white/30 text-left transition-all">
+       <div class="text-4xl mb-3">
+        ➕
+       </div><h3 class="text-xl font-semibold text-white">Add Section</h3><p class="text-white/70 text-sm mt-1">Create new section</p></button>
+      <div id="custom-sections-container"></div>
+     </div>
+    </div><!-- Schedule View -->
+    <div id="view-schedule" class="view hidden"><button onclick="goToView('sections')" class="flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg> Back to Sections </button>
+     <div class="flex items-center justify-between mb-8">
+      <div>
+       <h2 id="schedule-section-name" class="text-3xl font-bold text-white mb-1">Section Name</h2>
+       <p class="text-white/70">Class schedule</p>
+      </div><button onclick="showAddClassDialog()" class="px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg transition-all flex items-center gap-2">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+       </svg> Add Class </button>
+     </div>
+     <div id="schedule-content"></div>
+     <div id="empty-state" class="text-center py-16 hidden">
+      <div class="w-20 h-20 mx-auto mb-6 bg-white/10 rounded-2xl flex items-center justify-center">
+       <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+       </svg>
+      </div>
+      <h3 class="text-xl font-semibold text-white mb-2">No classes yet</h3>
+      <p class="text-white/70 mb-6">Add your first class to get started</p><button onclick="showAddClassDialog()" class="px-6 py-3 bg-white text-purple-600 font-semibold rounded-xl hover:shadow-xl transition-all"> Add First Class </button>
+     </div>
+    </div>
+   </main><!-- Add Section Dialog -->
+   <div id="dialog-add-section" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+    <div class="bg-gray-900 rounded-2xl p-6 w-full max-w-md border border-white/10">
+     <h3 class="text-xl font-semibold text-white mb-4">Add New Section</h3>
+     <form id="form-add-section"><label for="input-section-name" class="block text-white/80 mb-2 text-sm">Section Name</label> <input type="text" id="input-section-name" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-purple-500 mb-4" placeholder="e.g., Newton">
+      <div class="flex gap-3"><button type="button" onclick="closeDialog('dialog-add-section')" class="flex-1 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors">Cancel</button> <button type="submit" class="flex-1 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-colors">Add</button>
+      </div>
+     </form>
+    </div>
+   </div><!-- Add Class Dialog -->
+   <div id="dialog-add-class" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+    <div class="bg-gray-900 rounded-2xl p-6 w-full max-w-md border border-white/10 max-h-[90%] overflow-y-auto">
+     <h3 class="text-xl font-semibold text-white mb-4">Add New Class</h3>
+     <form id="form-add-class">
+      <div class="mb-3"><label for="input-day" class="block text-white/80 mb-2 text-sm">Day</label> <select id="input-day" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-purple-500"> <option value="">Select day</option> <option value="Monday">Monday</option> <option value="Tuesday">Tuesday</option> <option value="Wednesday">Wednesday</option> <option value="Thursday">Thursday</option> <option value="Friday">Friday</option> <option value="Saturday">Saturday</option> <option value="Sunday">Sunday</option> </select>
+      </div>
+      <div class="mb-3"><label for="input-start-time" class="block text-white/80 mb-2 text-sm">Start Time</label> <select id="input-start-time" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-purple-500"> <option value="">Select time</option> </select>
+      </div>
+      <div class="mb-3"><label for="input-end-time" class="block text-white/80 mb-2 text-sm">End Time</label> <select id="input-end-time" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-purple-500"> <option value="">Select time</option> </select>
+      </div>
+      <div class="mb-3"><label for="input-subject" class="block text-white/80 mb-2 text-sm">Subject</label> <input type="text" id="input-subject" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-purple-500" placeholder="e.g., Mathematics">
+      </div>
+      <div class="mb-4"><label for="input-room" class="block text-white/80 mb-2 text-sm">Room</label> <input type="text" id="input-room" required class="w-full px-4 py-2 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-purple-500" placeholder="e.g., Room 101">
+      </div>
+      <div class="flex gap-3"><button type="button" onclick="closeDialog('dialog-add-class')" class="flex-1 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors">Cancel</button> <button type="submit" id="btn-submit-class" class="flex-1 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition-colors">Add Class</button>
+      </div>
+     </form>
+    </div>
+   </div><!-- Nav Menu -->
+   <div id="dialog-nav" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
+    <div class="bg-gray-900 rounded-2xl p-6 w-full max-w-sm border border-white/10">
+     <h3 class="text-xl font-semibold text-white mb-4">Navigation</h3>
+     <div class="space-y-2"><button onclick="goToView('home'); closeDialog('dialog-nav');" class="w-full text-left px-4 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors flex items-center gap-3">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+       </svg> Home </button> <button onclick="goToView('sections'); closeDialog('dialog-nav');" class="w-full text-left px-4 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors flex items-center gap-3">
+       <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+       </svg> Sections </button>
+     </div><button onclick="closeDialog('dialog-nav')" class="w-full mt-4 px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors">Close</button>
+    </div>
+   </div>
+  </div>
+  <script>
+    // ==================== STATE ====================
+    let allClasses = [];
+    let customSections = [];
+    let currentSection = null;
+    let currentSectionName = '';
+    
+    const defaultConfig = {
+      site_title: 'My Schedule',
+      welcome_message: 'Manage your class schedules with ease. Stay organized and never miss a class!',
+      bg_start: '#667eea',
+      bg_end: '#764ba2',
+      card_bg: 'rgba(255, 255, 255, 0.1)',
+      text_primary: '#ffffff',
+      button_bg: '#ffffff',
+      font_family: 'Poppins'
+    };
+
+    // ==================== UI FUNCTIONS ====================
+    function goToView(viewName) {
+      document.querySelectorAll('.view').forEach(v => v.classList.add('hidden'));
+      const view = document.getElementById(`view-${viewName}`);
+      if (view) view.classList.remove('hidden');
+    }
+
+    function openSection(sectionId, sectionName) {
+      currentSection = sectionId;
+      currentSectionName = sectionName;
+      document.getElementById('schedule-section-name').textContent = sectionName;
+      goToView('schedule');
+      renderSchedule();
+    }
+
+    function showAddSectionDialog() {
+      document.getElementById('dialog-add-section').classList.remove('hidden');
+      document.getElementById('dialog-add-section').classList.add('flex');
+    }
+
+    function showAddClassDialog() {
+      if (!currentSection) {
+        showMessage('Please select a section first', true);
+        return;
+      }
+      document.getElementById('dialog-add-class').classList.remove('hidden');
+      document.getElementById('dialog-add-class').classList.add('flex');
+    }
+
+    function closeDialog(dialogId) {
+      const dialog = document.getElementById(dialogId);
+      dialog.classList.add('hidden');
+      dialog.classList.remove('flex');
+    }
+
+    function showMessage(text, isError = false) {
+      const msg = document.createElement('div');
+      msg.className = `fixed bottom-4 right-4 px-6 py-3 rounded-lg shadow-lg z-50 ${isError ? 'bg-red-500' : 'bg-green-500'} text-white`;
+      msg.textContent = text;
+      document.body.appendChild(msg);
+      setTimeout(() => msg.remove(), 4000);
+    }
+
+    // ==================== TIME HELPERS ====================
+    function generateTimes() {
+      const times = [];
+      for (let h = 6; h <= 18; h++) {
+        for (let m of [0, 40]) {
+          if (h === 18 && m === 40) break;
+          const period = h >= 12 ? 'PM' : 'AM';
+          const displayH = h > 12 ? h - 12 : h;
+          times.push(`${displayH}:${m.toString().padStart(2, '0')} ${period}`);
+        }
+      }
+      return times;
+    }
+
+    function populateTimeSelects() {
+      const times = generateTimes();
+      const start = document.getElementById('input-start-time');
+      const end = document.getElementById('input-end-time');
+      times.forEach(t => {
+        start.add(new Option(t, t));
+        end.add(new Option(t, t));
+      });
+    }
+
+    // ==================== RENDERING ====================
+    function renderCustomSections() {
+      const container = document.getElementById('custom-sections-container');
+      const colors = [
+        { gradient: 'linear-gradient(135deg, rgba(236, 72, 153, 0.3), rgba(219, 39, 119, 0.3))', emoji: '🌸' },
+        { gradient: 'linear-gradient(135deg, rgba(249, 115, 22, 0.3), rgba(234, 88, 12, 0.3))', emoji: '🍊' },
+        { gradient: 'linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(22, 163, 74, 0.3))', emoji: '🌿' },
+        { gradient: 'linear-gradient(135deg, rgba(234, 179, 8, 0.3), rgba(202, 138, 4, 0.3))', emoji: '⭐' }
+      ];
+      
+      container.innerHTML = customSections.map((sec, idx) => {
+        const color = colors[idx % colors.length];
+        return `
+          <button onclick="openSection('${sec.id}', '${sec.name}')" class="section-card" style="background: ${color.gradient};">
+            <div class="text-emoji">${color.emoji}</div>
+            <h3 class="section-title">${sec.name}</h3>
+            <p class="text-white-70 text-sm mt-1">View schedule</p>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function renderSchedule() {
+      const filtered = allClasses.filter(c => c.sectionId === currentSection);
+      const content = document.getElementById('schedule-content');
+      const empty = document.getElementById('empty-state');
+
+      if (filtered.length === 0) {
+        content.innerHTML = '';
+        empty.classList.remove('hidden');
+        return;
+      }
+
+      empty.classList.add('hidden');
+      
+      const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+      const grouped = {};
+      filtered.forEach(c => {
+        if (!grouped[c.day]) grouped[c.day] = [];
+        grouped[c.day].push(c);
+      });
+
+      content.innerHTML = days.filter(d => grouped[d]).map(day => `
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold text-white mb-3">${day}</h3>
+          <div class="space-y-2">
+            ${grouped[day].map(cls => `
+              <div class="bg-white/10 backdrop-blur-md rounded-xl p-4 border border-white/20 flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3 flex-1 min-w-0">
+                  <div class="w-10 h-10 bg-purple-500/30 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                  </div>
+                  <div class="min-w-0">
+                    <h4 class="text-white font-medium">${cls.subject}</h4>
+                    <p class="text-white/70 text-sm">${cls.time} • ${cls.room}</p>
+                  </div>
+                </div>
+                <button onclick="deleteClass('${cls.id}')" data-id="${cls.id}" class="delete-btn w-9 h-9 bg-red-500/20 hover:bg-red-500/30 text-red-300 rounded-lg flex items-center justify-center flex-shrink-0 transition-colors">
+                  ✕
+                </button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ==================== DATA OPERATIONS ====================
+    function deleteClass(classId) {
+      const btn = document.querySelector(`.delete-btn[data-id="${classId}"]`);
+      if (!btn) return;
+
+      if (btn.dataset.confirming === 'true') {
+        allClasses = allClasses.filter(c => c.id !== classId);
+        renderSchedule();
+        showMessage('Class deleted!');
+      } else {
+        btn.dataset.confirming = 'true';
+        btn.textContent = '?';
+        btn.classList.add('bg-red-600');
+        setTimeout(() => {
+          if (btn.dataset.confirming === 'true') {
+            delete btn.dataset.confirming;
+            btn.textContent = '✕';
+            btn.classList.remove('bg-red-600');
+          }
+        }, 2500);
+      }
+    }
+
+    // ==================== FORM HANDLERS ====================
+    document.getElementById('form-add-section').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('input-section-name').value.trim();
+      if (!name) return;
+
+      const newSection = {
+        id: `section-${Date.now()}`,
+        name: name
+      };
+      
+      customSections.push(newSection);
+      renderCustomSections();
+      document.getElementById('input-section-name').value = '';
+      closeDialog('dialog-add-section');
+      showMessage('Section added!');
+    });
+
+    document.getElementById('form-add-class').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (!currentSection) {
+        showMessage('No section selected. Please select a section first.', true);
+        closeDialog('dialog-add-class');
+        return;
+      }
+
+      const form = document.getElementById('form-add-class');
+      const day = document.getElementById('input-day').value;
+      const startTime = document.getElementById('input-start-time').value;
+      const endTime = document.getElementById('input-end-time').value;
+      const subject = document.getElementById('input-subject').value.trim();
+      const room = document.getElementById('input-room').value.trim();
+
+      if (!day || !startTime || !endTime || !subject || !room) {
+        showMessage('Please fill in all fields', true);
+        return;
+      }
+
+      const classData = {
+        id: `class-${Date.now()}`,
+        sectionId: currentSection,
+        day: day,
+        time: `${startTime} - ${endTime}`,
+        subject: subject,
+        room: room
+      };
+
+      allClasses.push(classData);
+      form.reset();
+      closeDialog('dialog-add-class');
+      renderSchedule();
+      showMessage('Class added successfully!');
+    });
+
+    document.getElementById('nav-btn').addEventListener('click', () => {
+      document.getElementById('dialog-nav').classList.remove('hidden');
+      document.getElementById('dialog-nav').classList.add('flex');
+    });
+
+    // ==================== ELEMENT SDK ====================
+    async function onConfigChange(config) {
+      document.getElementById('app-title').textContent = config.site_title || defaultConfig.site_title;
+      document.getElementById('welcome-msg').textContent = config.welcome_message || defaultConfig.welcome_message;
+      
+      const font = config.font_family || defaultConfig.font_family;
+      document.body.style.fontFamily = `${font}, sans-serif`;
+      
+      const bgStart = config.bg_start || defaultConfig.bg_start;
+      const bgEnd = config.bg_end || defaultConfig.bg_end;
+      document.getElementById('root').style.background = `linear-gradient(135deg, ${bgStart} 0%, ${bgEnd} 100%)`;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.bg_start || defaultConfig.bg_start,
+            set: (v) => window.elementSdk && window.elementSdk.setConfig({ bg_start: v })
+          },
+          {
+            get: () => config.bg_end || defaultConfig.bg_end,
+            set: (v) => window.elementSdk && window.elementSdk.setConfig({ bg_end: v })
+          },
+          {
+            get: () => config.card_bg || defaultConfig.card_bg,
+            set: (v) => window.elementSdk && window.elementSdk.setConfig({ card_bg: v })
+          },
+          {
+            get: () => config.text_primary || defaultConfig.text_primary,
+            set: (v) => window.elementSdk && window.elementSdk.setConfig({ text_primary: v })
+          },
+          {
+            get: () => config.button_bg || defaultConfig.button_bg,
+            set: (v) => window.elementSdk && window.elementSdk.setConfig({ button_bg: v })
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => config.font_family || defaultConfig.font_family,
+          set: (v) => window.elementSdk && window.elementSdk.setConfig({ font_family: v })
+        },
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['site_title', config.site_title || defaultConfig.site_title],
+        ['welcome_message', config.welcome_message || defaultConfig.welcome_message]
+      ]);
+    }
+
+    // ==================== INIT ====================
+    function init() {
+      populateTimeSelects();
+      
+      // Initialize Element SDK
+      if (window.elementSdk && typeof window.elementSdk.init === 'function') {
+        try {
+          window.elementSdk.init({
+            defaultConfig,
+            onConfigChange,
+            mapToCapabilities,
+            mapToEditPanelValues
+          });
+        } catch (err) {
+          console.error('Element SDK error:', err);
+        }
+      }
+    }
+
+    init();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bcc5a75e098cf3c',t:'MTc2ODIxNzc1Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
